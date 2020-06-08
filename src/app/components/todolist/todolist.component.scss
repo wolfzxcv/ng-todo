@@ -1,0 +1,38 @@
+div {
+  font-family: Arial, sans-serif;
+  background-color: #5f9ea0;
+  border-bottom: 1px solid #ffe4c4;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+  color: #800000;
+}
+
+// &:hover {
+//   color: #d2691e;
+// }
+
+.list {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.todolist {
+  padding-right: 15px;
+}
+input,
+.button {
+  width: 50px;
+  height: 50px;
+}
+.button {
+  color: #ffe4c4;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #483d8b;
+  border-radius: 10px;
+}
