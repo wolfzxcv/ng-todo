@@ -3,10 +3,12 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { TodolistComponent } from './components/todolist/todolist.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    TodolistComponent
   ],
   imports: [
     BrowserModule,
