@@ -1,7 +1,11 @@
 <div class="todo-item">
   <div class="list">
-    <input type="checkbox" (change)="markCom(todo.id)" />
-    <div class="todo-item" [ngClass]="todo.completed ? 'completed' : ''">
+    <input
+      type="checkbox"
+      (change)="markCom(todo.id)"
+      [checked]="todo.completed"
+    />
+    <div [ngClass]="todo.completed ? 'completed' : ''">
       {{ todo.title }}
     </div>
     <div class="button" (click)="removeTodo(todo.id)">X</div>

@@ -20,15 +20,15 @@ export class AppComponent {
   }
 
   ngOnInit(): void {
-    this.todos = [
-      {
-        id: 'what-you-wanna-be',
-        title: 'Todo one',
-        completed: false,
-      },
-    ];
-
+    this.todos = JSON.parse(localStorage.getItem('localStorageTodos')) || [];
     this.display = this.todos;
+  }
+
+  setItem(todos) {
+    localStorage.setItem('localStorageTodos', JSON.stringify(todos));
+  }
+  getItem() {
+    this.todos = JSON.parse(localStorage.getItem('localStorageTodos')) || [];
   }
 
   get title() {
@@ -44,6 +44,7 @@ export class AppComponent {
       };
       this.todos.push(newTodo);
       this.forma.reset();
+      this.setItem(this.todos);
     } else if (this.title && this.title.trim().length <= 3) {
       alert('please add more than 3 letters');
     }
@@ -56,10 +57,14 @@ export class AppComponent {
       }
       return x;
     });
+    this.setItem(this.todos);
   }
 
   deleteTodo(id: string) {
     this.todos = this.todos.filter((x) => x.id !== id);
+    this.setItem(this.todos);
+
+    this.display = this.todos;
   }
 
   displayAll() {
@@ -67,11 +72,11 @@ export class AppComponent {
   }
 
   displayActive() {
-    this.display = this.todos.filter((x) => x.completed === true);
+    this.display = this.todos.filter((x) => x.completed === false);
   }
 
   displayCompleted() {
-    this.display = this.todos.filter((x) => x.completed === false);
+    this.display = this.todos.filter((x) => x.completed === true);
   }
 
   /***
