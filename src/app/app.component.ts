@@ -11,6 +11,7 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 export class AppComponent {
   forma: FormGroup;
   todos: ITodo[];
+  display: ITodo[];
 
   constructor(private fb: FormBuilder) {
     this.forma = this.fb.group({
@@ -26,6 +27,8 @@ export class AppComponent {
         completed: false,
       },
     ];
+
+    this.display = this.todos;
   }
 
   get title() {
@@ -45,6 +48,7 @@ export class AppComponent {
       alert('please add more than 3 letters');
     }
   }
+
   toggleTodo(id: string) {
     this.todos = this.todos.map((x) => {
       if (x.id === id) {
@@ -53,8 +57,21 @@ export class AppComponent {
       return x;
     });
   }
+
   deleteTodo(id: string) {
     this.todos = this.todos.filter((x) => x.id !== id);
+  }
+
+  displayAll() {
+    this.display = this.todos;
+  }
+
+  displayActive() {
+    this.display = this.todos.filter((x) => x.completed === true);
+  }
+
+  displayCompleted() {
+    this.display = this.todos.filter((x) => x.completed === false);
   }
 
   /***

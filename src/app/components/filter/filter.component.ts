@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-filter',
@@ -6,19 +6,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./filter.component.scss'],
 })
 export class FilterComponent implements OnInit {
+  @Output() displayAll: EventEmitter<string> = new EventEmitter();
+  @Output() displayActive: EventEmitter<string> = new EventEmitter();
+  @Output() displayCompleted: EventEmitter<string> = new EventEmitter();
   constructor() {}
 
   ngOnInit(): void {}
 
   all() {
-    console.log('all');
+    this.displayAll.emit();
   }
 
   active() {
-    console.log('active');
+    this.displayActive.emit();
   }
 
-  done() {
-    console.log('done');
+  completed() {
+    this.displayCompleted.emit();
   }
 }

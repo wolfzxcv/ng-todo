@@ -27,9 +27,13 @@
   </div>
 </div>
 <app-todo-item
-  *ngFor="let todo of todos"
+  *ngFor="let todo of display"
   [todo]="todo"
   (toggleTodo)="toggleTodo($event)"
   (deleteTodo)="deleteTodo($event)"
 ></app-todo-item>
-<app-filter></app-filter>
+<app-filter
+  (displayAll)="displayAll()"
+  (displayActive)="displayActive()"
+  (displayCompleted)="displayCompleted()"
+></app-filter>
