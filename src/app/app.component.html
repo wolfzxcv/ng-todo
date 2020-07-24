@@ -14,15 +14,22 @@
   </div>
 
   <div class="body">
-    <form (ngSubmit)="addTodo(e)">
+    <form [formGroup]="forma">
       <input
         class="inputbox"
         type="text"
+        formControlName="title"
+        (keyup.enter)="addTodo()"
         placeholder="What should I do later..."
       />
-      <button class="add">Add</button>
+      <button class="add" (click)="addTodo()">Add</button>
     </form>
   </div>
 </div>
-<app-todolist></app-todolist>
+<app-todo-item
+  *ngFor="let todo of todos"
+  [todo]="todo"
+  (toggleTodo)="toggleTodo($event)"
+  (deleteTodo)="deleteTodo($event)"
+></app-todo-item>
 <app-filter></app-filter>
